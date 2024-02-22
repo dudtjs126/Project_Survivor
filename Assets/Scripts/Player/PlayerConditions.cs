@@ -4,6 +4,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+public interface IDamagable
+{
+    void TakePhysicalDamage(int damageAmount);
+
+}
+
 [System.Serializable]
 public class Condition
 {
@@ -32,7 +38,7 @@ public class Condition
 
 }
 
-public class PlayerConditions : MonoBehaviour
+public class PlayerConditions : MonoBehaviour , IDamagable
 {
     public Condition health;
     public Condition hunger;
@@ -97,5 +103,12 @@ public class PlayerConditions : MonoBehaviour
     public void Die()
     {
         Debug.Log("플레이어가 죽었다.");
+    }
+
+    public void TakePhysicalDamage(int damageAmount)
+    {
+        health.Subtract(damageAmount);
+        onTakeDamage?.Invoke();
+        // 연결된 친구가 있으면 호출해라 (if문?)
     }
 }
