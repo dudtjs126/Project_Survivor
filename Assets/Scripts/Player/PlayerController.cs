@@ -129,4 +129,10 @@ public class PlayerControllor : MonoBehaviour
         Gizmos.DrawRay (transform.position + (transform.right * 0.2f), Vector3.down);
         Gizmos.DrawRay (transform.position + (-transform.right * 0.2f), Vector3.down);
     }
+
+    public void ToggleCuror(bool toggle)
+    {
+        Cursor.lockState = toggle ? CursorLockMode.None : CursorLockMode.Locked;
+        canLook = !toggle;
+    }
 }
