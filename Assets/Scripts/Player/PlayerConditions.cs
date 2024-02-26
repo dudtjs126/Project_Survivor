@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -109,6 +110,10 @@ public class PlayerConditions : MonoBehaviour , IDamagable
     {
         health.Subtract(damageAmount);
         onTakeDamage?.Invoke();
-        // 연결된 친구가 있으면 호출해라 (if문?)
+
+        /*if(onTakeDamage != null)
+        {
+            onTakeDamage.Invoke();
+        }*/
     }
 }

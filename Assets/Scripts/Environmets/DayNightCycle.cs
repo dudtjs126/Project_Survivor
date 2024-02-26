@@ -48,6 +48,16 @@ public class DayNightCycle : MonoBehaviour
     {
         float intensity = intensityCurve.Evaluate(time);
 
+
+        /*if(lightSource == sun)
+        {
+            eulerAngles = 0.25f;
+        } 
+        else
+        {
+            eulerAngles = 0.75f;
+        }*/
+
         lightSource.transform.eulerAngles = (time - (lightSource == sun ? 0.25f : 0.75f)) * noon * 4.0f;
         lightSource.color = colorGradiant.Evaluate(time);
         lightSource.intensity = intensity;
